@@ -3,440 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pavani Kodati - Software Engineer Portfolio</title>
+    <title>Pavani Kodati | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #020617; color: white; overflow-x: hidden; }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        header p {
-            font-size: 1.3em;
-            margin-bottom: 20px;
-            opacity: 0.95;
-        }
-
-        .contact-links {
+        /* Navbar */
+        nav {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .contact-links a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 25px;
-            transition: all 0.3s;
-            font-size: 0.95em;
-        }
-
-        .contact-links a:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-
-        .content {
-            padding: 40px;
-        }
-
-        section {
-            margin-bottom: 50px;
-        }
-
-        h2 {
-            color: #667eea;
-            font-size: 2em;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-        }
-
-        .summary {
-            font-size: 1.1em;
-            line-height: 1.8;
-            color: #555;
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
+            justify-content: space-around;
+            align-items: center;
             padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #764ba2;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
+        nav .logo { font-size: 1.5rem; font-weight: 600; color: #3b82f6; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; transition: 0.3s; }
+        nav ul li a:hover { color: #3b82f6; }
 
-        .skill-category h3 {
-            color: #764ba2;
-            margin-bottom: 12px;
-            font-size: 1.2em;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 5px 0;
-            color: #555;
-        }
-
-        .skill-category li:before {
-            content: "▹ ";
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .experience-item, .project-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border-left: 4px solid #667eea;
-            transition: all 0.3s;
-        }
-
-        .experience-item:hover, .project-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .experience-item h3, .project-card h3 {
-            color: #333;
-            font-size: 1.4em;
-            margin-bottom: 8px;
-        }
-
-        .experience-meta {
-            color: #667eea;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .experience-item ul, .project-card ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .experience-item li, .project-card li {
-            margin-bottom: 8px;
-            color: #555;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .tech-stack {
+        /* Hero Section */
+        .hero {
+            height: 90vh;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 10%;
+        }
+        .hero-text h1 { font-size: 3.5rem; }
+        .hero-text span { color: #3b82f6; }
+        .hero-text p { font-size: 1.5rem; margin-top: 10px; }
+        
+        .hero-img img {
+            width: 350px;
+            border-radius: 50%;
+            border: 5px solid #3b82f6;
+            box-shadow: 0 0 20px #3b82f6;
         }
 
-        .tech-badge {
-            background: #667eea;
+        /* Social Icons */
+        .socials { margin-top: 20px; }
+        .socials a {
+            font-size: 1.5rem;
             color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.85em;
-            font-weight: 500;
+            margin-right: 15px;
+            transition: 0.3s;
         }
+        .socials a:hover { color: #3b82f6; transform: translateY(-5px); }
 
-        .impact {
-            background: white;
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 12px;
-            font-weight: 600;
-            color: #764ba2;
-        }
-
-        .education {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .education-item {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #764ba2;
-        }
-
-        .education-item h3 {
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .education-item p {
-            color: #555;
-            margin: 5px 0;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            
-            header p {
-                font-size: 1.1em;
-            }
-
-            .content {
-                padding: 20px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero { flex-direction: column-reverse; text-align: center; justify-content: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-img img { width: 250px; margin-bottom: 30px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Pavani Kodati</h1>
-            <p>Software Engineer | Java & AWS Specialist</p>
-            <div class="contact-links">
-                <a href="mailto:pavanikodati5@gmail.com">📧 Email</a>
-                <a href="https://www.linkedin.com/in/pavani-kodati/" target="_blank">💼 LinkedIn</a>
-                <a href="tel:+15618843878">📱 +1 (561) 884-3878</a>
-                <a href="#">📍 Delray, FL</a>
+
+    <div id="particles-js"></div>
+
+    <nav>
+        <div class="logo">Pavani.</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>Hi There,<br>I'm <span>Pavani Kodati</span></h1>
+            <p>I am into <span id="typing"></span></p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:your-email@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
-        </header>
-
-        <div class="content">
-            <section id="about">
-                <h2>About Me</h2>
-                <div class="summary">
-                    Software Engineer with expertise in delivering scalable Java and AWS solutions. Led the redesign of a microservices platform at Humana, boosting system performance by 30% and cutting deployment cycles by 25%. Implemented secure REST APIs using JWT/OAuth2, ensuring HIPAA-compliant data protection. Passionate about building high-availability services and optimizing cloud infrastructure.
-                </div>
-            </section>
-
-            <section id="skills">
-                <h2>Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Languages</h3>
-                        <ul>
-                            <li>Java</li>
-                            <li>Python</li>
-                            <li>SQL</li>
-                            <li>JavaScript</li>
-                            <li>HTML & CSS</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Frameworks & APIs</h3>
-                        <ul>
-                            <li>Spring Boot</li>
-                            <li>Spring MVC</li>
-                            <li>Hibernate & JPA</li>
-                            <li>RESTful APIs</li>
-                            <li>Microservices</li>
-                            <li>FastAPI</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Cloud & DevOps</h3>
-                        <ul>
-                            <li>AWS (EC2, S3, Lambda, SageMaker)</li>
-                            <li>Docker</li>
-                            <li>Jenkins</li>
-                            <li>GitHub Actions</li>
-                            <li>CI/CD Pipelines</li>
-                            <li>Maven & Terraform</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Databases & Security</h3>
-                        <ul>
-                            <li>MySQL & PostgreSQL</li>
-                            <li>MongoDB</li>
-                            <li>DynamoDB</li>
-                            <li>JWT & OAuth2</li>
-                            <li>HIPAA Compliance</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section id="projects">
-                <h2>Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>Microservices Platform Redesign</h3>
-                        <p><strong>Humana</strong> | 2025</p>
-                        <p>Led the architectural redesign of a healthcare microservices platform, focusing on scalability and performance optimization.</p>
-                        <div class="impact">📊 Impact: 30% performance boost, 25% faster deployments, 99.9% uptime</div>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Java</span>
-                            <span class="tech-badge">Spring Boot</span>
-                            <span class="tech-badge">Docker</span>
-                            <span class="tech-badge">AWS Lambda</span>
-                            <span class="tech-badge">Jenkins</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>HIPAA-Compliant Authentication System</h3>
-                        <p><strong>Humana</strong> | 2025</p>
-                        <p>Designed and implemented secure authentication and authorization mechanisms using industry-standard protocols for healthcare data protection.</p>
-                        <div class="impact">🔒 Impact: Full HIPAA compliance, zero security incidents</div>
-                        <div class="tech-stack">
-                            <span class="tech-badge">JWT</span>
-                            <span class="tech-badge">OAuth2</span>
-                            <span class="tech-badge">Spring Security</span>
-                            <span class="tech-badge">REST APIs</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Enterprise Application Deployment</h3>
-                        <p><strong>Jocata Financial</strong> | 2022-2023</p>
-                        <p>Built and deployed enterprise-grade Java applications with optimized database queries and modern frontend integration.</p>
-                        <div class="impact">⚡ Impact: 30% reliability increase, 25% latency reduction, 20% faster releases</div>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Spring Boot</span>
-                            <span class="tech-badge">Hibernate</span>
-                            <span class="tech-badge">React.js</span>
-                            <span class="tech-badge">AWS</span>
-                            <span class="tech-badge">PostgreSQL</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>FastAPI REST Services</h3>
-                        <p><strong>Humana</strong> | 2025</p>
-                        <p>Developed high-performance REST APIs in an Agile environment with focus on code quality and continuous integration.</p>
-                        <div class="impact">🚀 Impact: Rapid API development, improved team collaboration</div>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">FastAPI</span>
-                            <span class="tech-badge">GitHub Actions</span>
-                            <span class="tech-badge">Agile Scrum</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="experience">
-                <h2>Professional Experience</h2>
-                
-                <div class="experience-item">
-                    <h3>Software Engineer</h3>
-                    <div class="experience-meta">Humana | July 2025 - Present | Florida</div>
-                    <ul>
-                        <li>Design and deploy scalable software solutions using Java and Spring Boot, improving system performance by 30%</li>
-                        <li>Build and integrate microservices with Docker and AWS (Lambda, EC2, S3) ensuring 99.9% uptime</li>
-                        <li>Implement secure authentication using JWT and OAuth2, aligning with HIPAA standards</li>
-                        <li>Enhanced CI/CD pipelines via Jenkins and GitHub Actions, accelerating deployment cycles by 25%</li>
-                        <li>Develop FastAPI REST APIs in Agile environment with continuous peer reviews</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Graduate Teaching Assistant</h3>
-                    <div class="experience-meta">Florida Atlantic University | August 2024 - April 2025 | Boca Raton, FL</div>
-                    <ul>
-                        <li>Mentored undergraduate students in Java and data structures, raising average lab quiz scores by 12%</li>
-                        <li>Assisted with Java and Python debugging, leading to 15% reduction in code submission errors</li>
-                        <li>Managed Jenkins-based autograder for code correctness and OOP design pattern adherence</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Associate Software Engineer</h3>
-                    <div class="experience-meta">Jocata Financial Advisory and Technology | January 2022 - June 2023 | Hyderabad, India</div>
-                    <ul>
-                        <li>Deployed Java-based enterprise applications using Spring Boot and Hibernate, increasing reliability by 30%</li>
-                        <li>Optimized SQL queries with JDBC, reducing API latency by 25% and accelerating release cycles by 20%</li>
-                        <li>Integrated React.js/Angular frontends with backend services via JSON and AJAX</li>
-                        <li>Built CI/CD pipelines using Jenkins and Docker, deploying microservices to AWS for 99.9% uptime</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="education">
-                <h2>Education</h2>
-                <div class="education">
-                    <div class="education-item">
-                        <h3>Master of Science, Computer Science</h3>
-                        <p><strong>Florida Atlantic University</strong></p>
-                        <p>Graduated: May 2025</p>
-                        <p>📍 Boca Raton, FL</p>
-                    </div>
-                    <div class="education-item">
-                        <h3>Bachelor of Technology, Computer Science</h3>
-                        <p><strong>CMR Engineering College</strong></p>
-                        <p>Graduated: August 2022</p>
-                        <p>📍 Hyderabad, India</p>
-                    </div>
-                </div>
-            </section>
         </div>
+        <div class="hero-img">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Pavani" alt="Portfolio Avatar">
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2026 Pavani Kodati. All rights reserved.</p>
-            <p style="margin-top: 10px; opacity: 0.8;">Built with passion for software engineering excellence</p>
-        </footer>
-    </div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        /* Typing Effect */
+        var typed = new Typed('#typing', {
+            strings: ['Software Engineering', 'Java Development', 'Cloud Computing', 'Spring Boot'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+
+        /* Particles Config */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80 },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#3b82f6", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 4 }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "repulse" } }
+            }
+        });
+    </script>
 </body>
 </html>
